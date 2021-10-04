@@ -4,10 +4,11 @@ plugins {
     id("org.sonarqube") version "3.3"
     id("java-gradle-plugin")
     `maven-publish`
+    id("com.gradle.plugin-publish") version "0.16.0"
 }
 
 group = "info.dreamcoder"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -25,7 +26,7 @@ dependencies {
     implementation("info.dreamcoder:kotby:2a4b5647cd")
 
     implementation("com.adarshr:gradle-test-logger-plugin:3.0.0")
-    implementation("org.junit.jupiter:junit-jupiter:5.8.0")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
     testImplementation("org.amshove.kluent:kluent:1.68")
 }
@@ -54,6 +55,23 @@ gradlePlugin {
         create("migrationPlugin") {
             id = "info.dreamcoder.devtools"
             implementationClass = "gradle.plugins.DevTools"
+        }
+    }
+}
+
+pluginBundle {
+    website = "https://github.com/KotlinDream/devtools"
+    vcsUrl = "https://github.com/KotlinDream/devtools"
+
+
+    description = "Gradle项目的开发辅助工具"
+
+    (plugins) {
+
+        "migrationPlugin" {
+            displayName = "Gradle Project Devtools"
+            tags = listOf("individual", "gradle", "dev", "plugin", "devtools", "tools")
+            version = project.version.toString()
         }
     }
 }
