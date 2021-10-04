@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "info.dreamcoder"
-version = "1.1"
+version = "1.2"
 
 repositories {
     mavenCentral()
@@ -64,7 +64,7 @@ pluginBundle {
     vcsUrl = "https://github.com/KotlinDream/devtools"
 
 
-    description = "Gradle项目的开发辅助工具"
+    description = "Gradle Project Devtools"
 
     (plugins) {
 
