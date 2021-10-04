@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "info.dreamcoder"
-version = "1.2"
+version = "1.3"
 
 repositories {
     mavenCentral()
@@ -64,7 +64,7 @@ pluginBundle {
     vcsUrl = "https://github.com/KotlinDream/devtools"
 
 
-    description = "Gradle Project Devtools"
+    description = "Development tools for Gradle projects currently include monitoring and automatic execution of test files. When the code file or test file changes, the plug-in automatically detects the corresponding test file and executes it. If you type Enter, all tests will be executed."
 
     (plugins) {
 
