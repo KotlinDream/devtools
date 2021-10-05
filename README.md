@@ -1,6 +1,6 @@
 # Gradle Project Devtools
 
-Kotlin/Java gradle项目的开发工具
+Kotlin/Java gradle项目的开发辅助工具
 
 ## 为什么要有这个项目
 
