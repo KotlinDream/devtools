@@ -3,8 +3,10 @@ package gradle.tasks.guard
 import FileWatcher
 import gradle.utils.ClassFileConversion.Companion.fullTestClassName
 import gradle.utils.Logger.Companion.puts
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.gradle.api.Project
@@ -18,7 +20,7 @@ class ProjectFileWatcher(private val project: Project, private val channel: Chan
         onFileModify { fileModifyEvent(it) }
     }
 
-    fun run() {
+    suspend fun run() = withContext(Dispatchers.IO) {
         puts("开始监听项目 [${project.name}] ")
         fileWatcher.create()
     }

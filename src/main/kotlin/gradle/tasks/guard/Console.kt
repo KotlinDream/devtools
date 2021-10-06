@@ -1,21 +1,24 @@
 package gradle.tasks.guard
 
 import gradle.utils.Logger.Companion.puts
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.withContext
 import org.gradle.api.Project
 
 class Console(private val project: Project, private val channel: Channel<String>) {
-    fun start() {
+    suspend fun start() = withContext(Dispatchers.IO) {
+        puts("开始监听键盘输入" )
         while(true) {
-            val input = readLine().toString().trim()
-            puts("Get User Input $input" )
-            if (input.isEmpty()) {
-                puts("Run All Test")
-                TestRunner(project).runAllTest()
-            } else {
-                puts("Don't do anything")
+            when(readLine().toString().trim()) {
+                "" -> runAllTest()
             }
         }
+    }
+
+    private fun runAllTest() {
+        puts("运行所有测试")
+        TestRunner(project).runAllTest()
     }
 }
 
