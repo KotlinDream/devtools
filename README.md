@@ -14,6 +14,19 @@ Rails 有一堆的开发工具，能帮助我们快速的编写代码。例如Gu
 
 ## 使用
 
+### Add jitpack to settings.gradle.kts
+
+```kotlin
+// file settings.gradle.kts
+
+pluginManagement {
+    repositories {
+        maven("https://jitpack.io")
+        gradlePluginPortal()
+    }
+}
+```
+
 ### Using the plugins DSL
 
 ```kotlin
@@ -21,6 +34,7 @@ id("info.dreamcoder.devtools") version "1.3"
 ```
 
 然后在项目目录下运行
+
 ```shell
 gradle guard
 ```
