@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "info.dreamcoder"
-version = "1.3"
+version = "1.3.1"
 
 repositories {
     mavenCentral()
