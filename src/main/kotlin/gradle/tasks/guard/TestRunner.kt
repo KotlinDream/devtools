@@ -15,7 +15,7 @@ class TestRunner(private val project: Project) {
     }
 
     fun runTest(className: String) {
-        puts("运行项目 [${project.name}] 类 [$className] 的测试 [${project.projectDir.absolutePath}]")
+        puts("运行项目 [${project.name}] 类 [$className] 的测试 [${project.projectDir}]")
 
         try {
             connection.newTestLauncher()

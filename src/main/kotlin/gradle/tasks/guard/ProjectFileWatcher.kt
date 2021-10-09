@@ -15,6 +15,7 @@ import java.io.File
 class ProjectFileWatcher(private val project: Project, private val channel: Channel<String>) {
 
     private val logger  = KotlinLogging.logger {}
+    private val testRunner = TestRunner(project)
 
     private val fileWatcher = FileWatcher(project.projectDir.path + "/src").apply {
         onFileModify { fileModifyEvent(it) }
@@ -26,7 +27,7 @@ class ProjectFileWatcher(private val project: Project, private val channel: Chan
     }
 
     private fun fileModifyEvent(filePath: String) {
-        val testRunner = TestRunner(project)
+        puts("获取文件变动 [$filePath] ")
         val extensionNames = listOf<String>("kt", "java")
         val fileException = File(filePath).extension
 

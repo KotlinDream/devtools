@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "info.dreamcoder"
-version = "1.3.2"
+version = "1.3.3"
 
 repositories {
     mavenCentral()
@@ -23,7 +23,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:2.0.11")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt")
 
-    implementation("info.dreamcoder:kotby:0.2")
+    implementation("info.dreamcoder:kotby:0.3")
 
     implementation("com.adarshr:gradle-test-logger-plugin:3.0.0")
     implementation("org.junit.jupiter:junit-jupiter:5.8.1")
