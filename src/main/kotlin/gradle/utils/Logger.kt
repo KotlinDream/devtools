@@ -17,7 +17,7 @@ class Logger {
 
         fun putsWithTime(message: String) {
             val now = LocalDateTime.now().format(dateFormatter)
-            puts("${t.green("[$now}]")} $message")
+            puts("${t.green("[$now]")} $message")
         }
 
         fun putsError(message: String) {

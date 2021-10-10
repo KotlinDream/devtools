@@ -24,11 +24,6 @@ open class GuardTask : DefaultTask(){
         scope.launch {
             ProjectFileWatcher(project, channel).run()
         }
-        project.subprojects.forEach {
-            scope.launch {
-                ProjectFileWatcher(it, channel).run()
-            }
-        }
     }
 
     private fun startConsoleWatch(scope: CoroutineScope) {

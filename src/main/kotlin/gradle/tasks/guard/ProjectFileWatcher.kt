@@ -1,29 +1,39 @@
 package gradle.tasks.guard
 
-import FileWatcher
 import gradle.utils.ClassFileConversion.Companion.fullTestClassName
 import gradle.utils.Logger.Companion.puts
-import kotlinx.coroutines.CoroutineScope
+import info.dreamcoder.kotby.io.FileWatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.gradle.api.Project
 import java.io.File
+import java.nio.file.Paths
 
 class ProjectFileWatcher(private val project: Project, private val channel: Channel<String>) {
 
     private val logger  = KotlinLogging.logger {}
     private val testRunner = TestRunner(project)
 
-    private val fileWatcher = FileWatcher(project.projectDir.path + "/src").apply {
+    private val fileWatcher = FileWatcher(*projectDirs(project).toTypedArray()).apply {
         onFileModify { fileModifyEvent(it) }
     }
 
     suspend fun run() = withContext(Dispatchers.IO) {
         puts("开始监听项目 [${project.name}] ")
         fileWatcher.create()
+    }
+
+    private fun projectDirs(p: Project): MutableList<String> {
+        val dirs = mutableListOf<String>()
+        dirs.add(Paths.get(p.projectDir.path , "/src").toString())
+        p.subprojects.forEach {
+            projectDirs(it).forEach { path ->
+                dirs.add(path)
+            }
+        }
+        return dirs
     }
 
     private fun fileModifyEvent(filePath: String) {
