@@ -21,6 +21,7 @@ class TestRunner(private val project: Project) {
             connection.newTestLauncher()
                 .withJvmTestClasses(className)
                 .setStandardOutput(System.out)
+                .setStandardError(System.out)
                 .withArguments("-q")
                 .run()
         } catch (e: Exception) {
