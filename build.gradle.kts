@@ -19,7 +19,7 @@ repositories {
 dependencies {
     implementation(gradleApi())
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
-    implementation("com.github.ajalt.mordant:mordant:2.0.0-beta2")
+    implementation("com.github.ajalt:mordant:1.2.1")
     implementation("io.github.microutils:kotlin-logging:2.0.11")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt")
 

@@ -1,7 +1,6 @@
 package gradle.tasks.guard
 
 import gradle.utils.Logger.Companion.printError
-import gradle.utils.Logger.Companion.puts
 import java.io.OutputStream
 
 class TaskOut : OutputStream() {

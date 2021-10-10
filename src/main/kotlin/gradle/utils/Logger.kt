@@ -1,32 +1,33 @@
 package gradle.utils
 
-import com.github.ajalt.mordant.rendering.AnsiLevel
-import com.github.ajalt.mordant.rendering.TextColors.*
-import com.github.ajalt.mordant.terminal.Terminal
+
+import com.github.ajalt.mordant.TermColors
+import com.github.ajalt.mordant.TerminalCapabilities
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class Logger {
     companion object {
         private val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss")
+        private val t = TermColors(TermColors.Level.TRUECOLOR)
 
         fun puts(message: String) {
-            println("> ${green("Kotby")} $message")
+            println("> ${t.green("Kotby")} $message")
         }
 
         fun putsWithTime(message: String) {
             val now = LocalDateTime.now().format(dateFormatter)
-            puts("${green("[$now}]")} $message")
+            puts("${t.green("[$now}]")} $message")
         }
 
         fun putsError(message: String) {
-            println("> ${red("Kotby")} $message")
+            println("> ${t.red("Kotby")} $message")
         }
 
         fun printError(message: String) {
-            print(red(message))
+            print(t.red(message))
+            System.out.flush()
         }
 
     }
 }
-
