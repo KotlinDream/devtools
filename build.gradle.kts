@@ -52,7 +52,7 @@ sonarqube {
 
 gradlePlugin {
     plugins {
-        create("migrationPlugin") {
+        create("devtoolsPlugin") {
             id = "info.dreamcoder.devtools"
             implementationClass = "gradle.plugins.DevTools"
         }
@@ -68,7 +68,7 @@ pluginBundle {
 
     (plugins) {
 
-        "migrationPlugin" {
+        "devtoolsPlugin" {
             displayName = "Gradle Project Devtools"
             tags = listOf("individual", "gradle", "dev", "plugin", "devtools", "tools")
             version = project.version.toString()
