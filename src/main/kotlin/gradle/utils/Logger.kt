@@ -25,7 +25,7 @@ class Logger {
         }
 
         fun printError(message: String) {
-            print(t.red(message))
+            print(message)
             System.out.flush()
         }
 

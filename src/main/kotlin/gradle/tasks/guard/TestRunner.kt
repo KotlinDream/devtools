@@ -5,6 +5,7 @@ import mu.KotlinLogging
 import org.gradle.api.Project
 import org.gradle.tooling.GradleConnector
 
+
 class TestRunner(private val project: Project) {
 
     private val logger  = KotlinLogging.logger {}
@@ -21,7 +22,7 @@ class TestRunner(private val project: Project) {
             connection.newTestLauncher()
                 .withJvmTestClasses(className)
                 .setStandardOutput(System.out)
-                .setStandardError(TaskOut())
+                .setStandardError(System.out)
                 .withArguments("-q")
                 .run()
         } catch (e: Exception) {

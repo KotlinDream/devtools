@@ -24,7 +24,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:2.0.11")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt")
 
-    implementation("info.dreamcoder:kotby:0.4")
+    implementation("info.dreamcoder:kotby:0.5")
 
     implementation("com.adarshr:gradle-test-logger-plugin:3.0.0")
     implementation("org.junit.jupiter:junit-jupiter:5.8.1")
