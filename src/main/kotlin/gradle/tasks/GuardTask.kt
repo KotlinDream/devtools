@@ -8,6 +8,7 @@ import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.gradle.api.DefaultTask
+import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction
 
 
@@ -21,8 +22,15 @@ open class GuardTask : DefaultTask(){
     }
 
     private fun startAllProjectWatch(scope: CoroutineScope) {
+        watchProject(scope, project)
+        project.subprojects.forEach {
+            watchProject(scope, it)
+        }
+    }
+
+    private fun watchProject(scope: CoroutineScope, p: Project) {
         scope.launch {
-            ProjectFileWatcher(project, channel).run()
+            ProjectFileWatcher(p, channel).run()
         }
     }
 

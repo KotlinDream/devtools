@@ -16,24 +16,13 @@ class ProjectFileWatcher(private val project: Project, private val channel: Chan
     private val logger  = KotlinLogging.logger {}
     private val testRunner = TestRunner(project)
 
-    private val fileWatcher = FileWatcher(*projectDirs(project).toTypedArray()).apply {
+    private val fileWatcher = FileWatcher(Paths.get(project.projectDir.path , "/src").toString()).apply {
         onFileModify { fileModifyEvent(it) }
     }
 
     suspend fun run() = withContext(Dispatchers.IO) {
         puts("开始监听项目 [${project.name}] ")
         fileWatcher.create()
-    }
-
-    private fun projectDirs(p: Project): MutableList<String> {
-        val dirs = mutableListOf<String>()
-        dirs.add(Paths.get(p.projectDir.path , "/src").toString())
-        p.subprojects.forEach {
-            projectDirs(it).forEach { path ->
-                dirs.add(path)
-            }
-        }
-        return dirs
     }
 
     private fun fileModifyEvent(filePath: String) {
