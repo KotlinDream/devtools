@@ -43,6 +43,10 @@ tasks.jacocoTestReport {
     }
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 sonarqube {
     properties {
         property("sonar.projectKey", "KotlinDream_devtools")
