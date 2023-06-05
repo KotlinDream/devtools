@@ -1,44 +1,50 @@
-# Gradle Project Devtools
+# Gradle Project Devtools 
 
-Kotlin/Java gradle项目的开发辅助工具
+Kotlin/Java, Gradle project development helpers 
 
-## 为什么要有这个项目
+[![cn](https://img.shields.io/badge/lang-cn-red.svg)](https://github.com/KotlinDream/devtools/blob/master/README.cn.md)
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/KotlinDream/devtools/blob/master/README.md)
 
-Rails 有一堆的开发工具，能帮助我们快速的编写代码。例如Guard, 就能在监听项目的文件，依据变化执行对应的测试。当然他还有很多其他的用法，但是Java/Kotlin项目中没有找到对应的工具。
-于是，我自己开发了这个插件。
+## Why should we have this project 
 
-## 项目目标
-1. 开源，免费，永远的免费。
-2. 完全使用Kotlin开发，支持 Java/Kotlin 等JVM语言的 Gradle项目。
-3. 支持SpringBoot, Quarkus等框架。
+Rails has a bunch of development tools that can help us write code quickly. For example, Guard can monitor the files of the project and execute corresponding tests according to the changes. Of course, it has many other uses, but no corresponding tools have been found in the Java/Kotlin project. 
+So, I developed this plugin myself. 
 
-## 使用
+## Project goal 
+1. Open source, free, free forever. 
+2. Fully developed in Kotlin, supporting Gradle projects in JVM languages such as Java/Kotlin. 
+3. Support SpringBoot, Quarkus and other frameworks. 
 
-### Add jitpack to settings.gradle.kts
+## Use 
+
+### Add jitpack to settings.gradle.kts 
+
+```kotlin 
+// file settings.gradle.kts 
+
+pluginManagement { 
+    repositories { 
+        maven("https://jitpack.io") 
+        gradlePluginPortal() 
+    } 
+} 
+``` 
+
+### Using the plugins DSL 
 
 ```kotlin
-// file settings.gradle.kts
-
-pluginManagement {
-    repositories {
-        maven("https://jitpack.io")
-        gradlePluginPortal()
-    }
-}
+id("info.dreamcoder.devtools") version "1.3" 
 ```
+Then run
 
-### Using the plugins DSL
+```shell 
+gradle guard 
+``` 
 
-```kotlin
-id("info.dreamcoder.devtools") version "1.3"
-```
+in the project directory 
+At the momment when you edit the source code or corresponding test file, then save , it will automatically execute the corresponding test and output the result. If you press enter, the program will perform all tests.
 
-然后在项目目录下运行
+---
 
-```shell
-gradle guard
-```
-
-这时候，你可以尝试编辑源代码或者对应的测试文件，保存的时候，他就会自动执行对应的测试并输出结果。如果你输入回车，则程序会执行所有的测试。
 
 
